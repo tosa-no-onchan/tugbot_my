@@ -84,11 +84,11 @@
   direction: GZ_TO_ROS
 
 # gz topic published by Sensors plugin
-- ros_topic_name: "scan_omni/scan"
-  gz_topic_name: "world/depot/model/tugbot/link/scan_omni/sensor/scan_omni/scan"
-  ros_type_name: "sensor_msgs/msg/LaserScan"
-  gz_type_name: "gz.msgs.LaserScan"
-  direction: GZ_TO_ROS
+#- ros_topic_name: "scan_omni/scan"
+#  gz_topic_name: "world/depot/model/tugbot/link/scan_omni/sensor/scan_omni/scan"
+#  ros_type_name: "sensor_msgs/msg/LaserScan"
+#  gz_type_name: "gz.msgs.LaserScan"
+#  direction: GZ_TO_ROS
 
 # gz topic published by Sensors plugin
 - ros_topic_name: "scan_omni/scan/points"
