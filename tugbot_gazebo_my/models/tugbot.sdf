@@ -509,11 +509,16 @@
 
     <link name='scan_front'>
       <pose>0.22100000000000009 0 0.1404 0 0 0</pose>
+
+      <!-- scan センサーの定義 -->
       <sensor name='scan_front' type='gpu_lidar'>
         <pose>0 0 0 0 0 0</pose>
         <topic>__default__</topic>
         <update_rate>10</update_rate>
         <enable_metrics>false</enable_metrics>
+        <!-- turtlebot3 の定義にならってみる by nishi 2025.10.12 -->
+        <!-- <topic>scan</topic>  --><!-- これは効かない -->
+        <gz_frame_id>scan_front</gz_frame_id> <!-- これは、反映される。 -->
         <lidar>
           <scan>
             <horizontal>
@@ -530,8 +535,13 @@
             </vertical>
           </scan>
           <range>
-            <min>0.01</min>
+            <!-- original tugbot house -->
+            <!-- <min>0.01</min>
             <max>5</max>
+            <resolution>0.01</resolution> -->
+            <!-- depot tb4 -->
+            <min>0.16400000000000001</min>
+            <max>10</max>
             <resolution>0.01</resolution>
           </range>
           <noise>
@@ -568,6 +578,8 @@
         <topic>__default__</topic>
         <update_rate>5</update_rate>
         <enable_metrics>false</enable_metrics>
+        <!-- add by nishi 2025.10.12 -->
+        <gz_frame_id>scan_back</gz_frame_id> <!-- これは、反映される。 -->
         <lidar>
           <scan>
             <horizontal>
@@ -584,8 +596,15 @@
             </vertical>
           </scan>
           <range>
+            <!-- original tb3 house -->
+            <!--
             <min>0.01</min>
             <max>5</max>
+            <resolution>0.01</resolution>
+            -->
+            <!-- depot tugbot -->
+            <min>0.16400000000000001</min>
+            <max>10</max>
             <resolution>0.01</resolution>
           </range>
           <noise>
@@ -685,6 +704,8 @@
         <topic>__default__</topic>
         <update_rate>10</update_rate>
         <enable_metrics>false</enable_metrics>
+        <!-- add by nishi 2025.10.12 -->
+        <gz_frame_id>scan_omni</gz_frame_id> <!-- これは、反映される。 -->
         <lidar>
           <scan>
             <horizontal>

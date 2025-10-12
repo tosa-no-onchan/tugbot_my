@@ -48,9 +48,8 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
     #ROBOT_MODEL = os.environ['ROBOT_MODEL']
-
-    #spawn_py_path = 'spawn_'+ROBOT_MODEL+'.launch.py'
-    spawn_py_path = 'spawn_tugbot.launch.py'
+    ROBOT_MODEL = 'tugbot'
+    spawn_py_path = 'spawn_'+ROBOT_MODEL+'.launch.py'
 
     launch_file_dir = os.path.join(get_package_share_directory('tugbot_gazebo_my'), 'launch')
     #pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
