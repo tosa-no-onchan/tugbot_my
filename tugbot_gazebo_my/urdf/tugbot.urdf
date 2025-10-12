@@ -14,27 +14,31 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/base/tugbot_simp.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/base/tugbot_simp.dae"/>
 			</geometry>
 		</visual>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/base/movai_logo.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/base/movai_logo.dae"/>
 			</geometry>
 			<material name="">
 				<color rgba="1.0 1.0 1.0 1.0"/>
 			</material>
 		</visual>
+		<!--
 		<visual>
 			<origin rpy="0 1.57079632679 0" xyz="-0.1 0 0.1945"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/base/movai-logo.png"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/base/movai-logo.png"/>
 			</geometry>
 			<material name="">
 				<color rgba="0.0 0.0 0 1"/>
 			</material>
 		</visual>
+		-->
+		<!-- ファイルが判らん by nishi 2025.10.12 -->
+		<!--
 		<visual>
 			<origin rpy="0 1.57079632679 0" xyz="-0.099 0 0.195"/>
 			<geometry>
@@ -43,7 +47,8 @@
 			<material name="">
 				<color rgba="1 0.5 0 0.5"/>
 			</material>
-		</visual> 
+		</visual>
+		-->
 	</link>
 	<link name="imu_link">
 		<origin rpy="0 0 -1.57" xyz="0.14 0.02 0.25"/>
@@ -149,19 +154,19 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 -0.035"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/VLP16_base_1.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/VLP16_base_1.dae"/>
 			</geometry>
 		</visual>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 -0.035"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/VLP16_base_2.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/VLP16_base_2.dae"/>
 			</geometry>
 		</visual>
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 -0.035"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/VLP16_scan.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/VLP16_scan.dae"/>
 			</geometry>
 		</visual>
 	</link>
@@ -217,7 +222,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 -0.03"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/wheel/wheel.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/wheel/wheel.dae"/>
 			</geometry>
 		</visual>
 	</link>
@@ -246,7 +251,7 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 -0.03"/>
 			<geometry>
-				<mesh filename="package://tubbot_gazebo_my/models/meshes/wheel/wheel.dae"/>
+				<mesh filename="package://tugbot_gazebo_my/models/meshes/wheel/wheel.dae"/>
 			</geometry>
 		</visual>
 	</link>
