@@ -9,6 +9,7 @@ Gazebo Hramonic
 #### Build.  
 $ cd ~/colcon_ws-jazzy/src  
 $ git clone https://github.com/tosa-no-onchan/tugbot_my.git  
+$ cd ..  
 $ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select tugbot_gazebo_my  
 $ . install/setup.bash  
 
