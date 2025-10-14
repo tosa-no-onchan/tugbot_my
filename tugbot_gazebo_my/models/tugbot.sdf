@@ -253,6 +253,7 @@
       <sensor name='color' type='camera'>
         <pose>0 0.032500000000000001 0.012500000000000001 0 0 0</pose>
         <topic>__default__</topic>
+        <gz_frame_id>camera_front/color</gz_frame_id> <!-- これは、反映される。 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
         <camera name='__default__'>
@@ -307,6 +308,7 @@
       <sensor name='depth' type='depth_camera'>
         <pose>0 0.017500000000000002 0.012500000000000001 0 0 0</pose>
         <topic>__default__</topic>
+        <gz_frame_id>camera_front/depth</gz_frame_id> <!-- これは、反映される。 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
         <camera name='__default__'>
@@ -382,6 +384,7 @@
       <sensor name='color' type='camera'>
         <pose>0 0.032500000000000001 0.012500000000000001 0 0 0</pose>
         <topic>__default__</topic>
+        <gz_frame_id>camera_back/color</gz_frame_id> <!-- これは、反映される。 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
         <camera name='__default__'>
@@ -436,6 +439,7 @@
       <sensor name='depth' type='depth_camera'>
         <pose>0 0.017500000000000002 0.012500000000000001 0 0 0</pose>
         <topic>__default__</topic>
+        <gz_frame_id>camera_back/depth</gz_frame_id> <!-- これは、反映される。 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
         <camera name='__default__'>
@@ -723,7 +727,9 @@
           </scan>
           <range>
             <min>0.20000000000000001</min>
-            <max>100</max>
+            <!-- <max>100</max>  -->
+            <!-- changed by nishi 2025.10.13-->
+            <max>10</max>
             <resolution>0.01</resolution>
           </range>
           <noise>
@@ -1317,6 +1323,7 @@
       <pose>0 0 5.5511151231257827e-17 0 0 0</pose>
     </joint>
 
+    <!-- lego_loam_sr では、 base_link を使っていて、バッティングする。 by nishi 2025.10.13 -->
     <joint name="base_joint" type="fixed">
       <parent>base_footprint</parent>
       <child>base_link</child>
@@ -1342,8 +1349,11 @@
       <odom_topic>odom</odom_topic>
       <frame_id>odom</frame_id>
       <tf_topic>/tf</tf_topic>
-      <odom_publisher_frequency>30</odom_publisher_frequency>
+      <!-- lego_loam_sr の時、 /tf が、バッティングするので、 /tf を /tf_gazebo にする。 by nishi 2025.10.13 -->
+      <!-- <tf_topic>/tf_gazebo</tf_topic> -->
+      <!-- lego_loam_sr の時、 下記、base_footprint を link しない。 by nishi 2025.10.13 -->
       <child_frame_id>base_footprint</child_frame_id>
+      <odom_publisher_frequency>30</odom_publisher_frequency>
     </plugin>
 
     <plugin name='ignition::gazebo::systems::JointController' filename='ignition-gazebo-joint-controller-system'>

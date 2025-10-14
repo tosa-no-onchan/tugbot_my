@@ -41,8 +41,15 @@
   direction: GZ_TO_ROS
 
 # gz topic published by Sensors plugin
-- ros_topic_name: "scan_front/scan"
+#- ros_topic_name: "scan_front/scan"
+- ros_topic_name: "scan_front"
   gz_topic_name: "world/depot/model/tugbot/link/scan_front/sensor/scan_front/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "scan_back"
+  gz_topic_name: "world/depot/model/tugbot/link/scan_back/sensor/scan_back/scan"
   ros_type_name: "sensor_msgs/msg/LaserScan"
   gz_type_name: "gz.msgs.LaserScan"
   direction: GZ_TO_ROS
@@ -77,7 +84,8 @@
   direction: GZ_TO_ROS
 
 # gz topic published by Sensors plugin (Depth Camera)
-- ros_topic_name: "depth_camera_front/depth_image/points"
+#- ros_topic_name: "depth_camera_front/depth_image/points"
+- ros_topic_name: "camera_front/depth/depth_points"
   gz_topic_name: "world/depot/model/tugbot/link/camera_front/sensor/depth/depth_image/points"
   ros_type_name: "sensor_msgs/msg/PointCloud2"
   gz_type_name: "gz.msgs.PointCloudPacked"
