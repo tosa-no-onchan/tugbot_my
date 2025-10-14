@@ -1,5 +1,6 @@
 # tugbot_my  
-ROS2 Gazebo for Tugbot.  
+ROS2 Tugbot Gazebo.  
+ROS2 Gazebo で、Tugbot が動かせる。  
 
 #### 開発環境  
 PC: Ubuntu Mate 24.04  
