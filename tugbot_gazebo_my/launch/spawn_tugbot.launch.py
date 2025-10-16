@@ -33,7 +33,8 @@ def generate_launch_description():
     urdf_path = os.path.join(
         get_package_share_directory('tugbot_gazebo_my'),
         'models',
-        'tugbot.sdf'
+        #'tugbot.sdf'
+        'tugbot_light.sdf'
     )
 
     # add for Bridge ROS tioic

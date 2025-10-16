@@ -770,6 +770,7 @@
       <parent>base_link</parent>
       <pose>0 0 0 0 0 0</pose>
     </joint>
+
     <link name='gripper'>
       <pose>-0.35000000000000009 0 0.10000000000000001 0 0 0</pose>
       <inertial>
@@ -1334,7 +1335,6 @@
       <pose>0 0 5.5511151231257827e-17 0 0 0</pose>
     </joint>
 
-    <!-- lego_loam_sr では、 base_link を使っていて、バッティングする。 by nishi 2025.10.13 -->
     <joint name="base_joint" type="fixed">
       <parent>base_footprint</parent>
       <child>base_link</child>
@@ -1367,6 +1367,7 @@
       <odom_publisher_frequency>30</odom_publisher_frequency>
     </plugin>
 
+    <!--
     <plugin name='ignition::gazebo::systems::JointController' filename='ignition-gazebo-joint-controller-system'>
       <joint_name>gripper_joint</joint_name>
       <use_force_commands>true</use_force_commands>
@@ -1387,10 +1388,12 @@
       <publish_nested_model_pose>true</publish_nested_model_pose>
       <update_frequency>20</update_frequency>
     </plugin>
+    -->
     <plugin name='ignition::gazebo::systems::JointController' filename='ignition-gazebo-joint-controller-system'>
       <joint_name>warnign_light_joint</joint_name>
       <initial_velocity>10.0</initial_velocity>
     </plugin>
+    <!--
     <plugin name='ignition::gazebo::systems::LinearBatteryPlugin' filename='ignition-gazebo-linearbatteryplugin-system'>
       <battery_name>linear_battery</battery_name>
       <voltage>24.592</voltage>
@@ -1406,5 +1409,6 @@
       <joint_name>gripper_joint</joint_name>
       <joint_name>gripper_hand_joint</joint_name>
     </plugin>
+    -->
   </model>
 </sdf>
