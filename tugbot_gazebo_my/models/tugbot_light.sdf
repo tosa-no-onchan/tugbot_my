@@ -248,18 +248,39 @@
       <pose>0 0 0 0 0 0</pose>
     </joint>
 
+    <joint name='camera_front_joint' type='fixed'>
+    	<pose>0.0553 0 0.4323 0 0 0</pose>
+      <!-- <pose>0 0 0 0 0 0</pose> -->
+      <parent>base_link</parent>
+      <child>camera_front</child>
+    </joint>
+
     <link name='camera_front'>
-      <pose>0.055299999999999905 0 0.43230000000000002 0 0 0</pose>
+      <!-- <pose>0 0 0 0 0 0</pose> -->
+      <pose>0.0553 0 0.4323 0 0 0</pose>
+      <inertial>
+        <!-- <pose>0 0 0 0 0 0</pose> -->
+        <pose>0.0553 0 0.4323 0 0 0</pose>
+        <mass>0.035</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+
       <sensor name='color' type='camera'>
-        <pose>0 0.032500000000000001 0.012500000000000001 0 0 0</pose>
         <topic>__default__</topic>
-        <!-- <gz_frame_id>camera_front/color_frame</gz_frame_id> --> <!-- 倒立補正なし。 -->
-        <gz_frame_id>camera_front/color_optical_frame</gz_frame_id> <!-- 倒立補正あり。 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
-        <camera name='__default__'>
-          <pose>0 0 0 0 0 0</pose>
-          <horizontal_fov>1.2042771800000001</horizontal_fov>
+        <!-- <camera name='__default__'> -->
+        <camera name="intel_realsense_r200">
+          <camera_info_topic>__default__</camera_info_topic>
+          <!-- <horizontal_fov>1.2042771800000001</horizontal_fov> -->
+          <horizontal_fov>1.02974</horizontal_fov>
           <image>
             <!-- <width>848</width> -->
             <width>640</width>
@@ -268,56 +289,32 @@
             <format>R8G8B8</format>
             <anti_aliasing>4</anti_aliasing>
           </image>
-          <camera_info_topic>__default__</camera_info_topic>
-          <trigger_topic></trigger_topic>
-          <triggered>false</triggered>
           <clip>
-            <near>0.10000000000000001</near>
-            <far>50</far>
+            <near>0.02</near>
+            <far>300</far>
           </clip>
-          <save enabled='false'>
-            <path>__default__</path>
-          </save>
-          <visibility_mask>4294967295</visibility_mask>
           <noise>
-            <type>none</type>
-            <mean>0</mean>
-            <stddev>0</stddev>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame.
+                  That pixel's noise value is added to each of its color
+                  channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
           </noise>
-          <distortion>
-            <k1>0</k1>
-            <k2>0</k2>
-            <k3>0</k3>
-            <p1>0</p1>
-            <p2>0</p2>
-            <center>0.5 0.5</center>
-          </distortion>
-          <lens>
-            <type>stereographic</type>
-            <scale_to_hfov>true</scale_to_hfov>
-            <cutoff_angle>1.5707</cutoff_angle>
-            <env_texture_size>256</env_texture_size>
-            <intrinsics>
-              <fx>615.9603271484375</fx>
-              <fy>616.227294921875</fy>
-              <cx>419.83026123046875</cx>
-              <cy>245.14314270019531</cy>
-              <s>0</s>
-            </intrinsics>
-          </lens>
-          <optical_frame_id></optical_frame_id>
+          <optical_frame_id>camera_front/color_optical_frame</optical_frame_id> <!-- -倒立 -->
         </camera>
       </sensor>
+
       <sensor name='depth' type='depth_camera'>
-        <pose>0 0.017500000000000002 0.012500000000000001 0 0 0</pose>
+        <pose>0 0.0175 0.0125 0 0 0</pose>
         <topic>__default__</topic>
-        <!-- <gz_frame_id>camera_front/depth_frame</gz_frame_id> --> <!-- 倒立補正なし。 -->
-        <gz_frame_id>camera_front/depth_optical_frame</gz_frame_id> <!-- 倒立補正あり。 -->
+        <!-- <gz_frame_id>camera_front/depth_frame</gz_frame_id> --> <!-- 正置 -->
+        <!-- <gz_frame_id>camera_front/depth_optical_frame</gz_frame_id> --> <!-- -倒立 -->
         <update_rate>6</update_rate>
         <enable_metrics>false</enable_metrics>
         <camera name='__default__'>
           <pose>0 0 0 0 0 0</pose>
-          <horizontal_fov>1.51843645</horizontal_fov>
+          <horizontal_fov>1.02974</horizontal_fov>
           <image>
             <!-- <width>848</width> -->
             <width>640</width>
@@ -350,6 +347,7 @@
             <p2>0</p2>
             <center>0.5 0.5</center>
           </distortion>
+          <!--
           <lens>
             <type>stereographic</type>
             <scale_to_hfov>true</scale_to_hfov>
@@ -363,29 +361,19 @@
               <s>0</s>
             </intrinsics>
           </lens>
-          <optical_frame_id></optical_frame_id>
+          -->
+          <optical_frame_id>camera_front/depth_frame</optical_frame_id> <!-- 正置 -->
         </camera>
       </sensor>
-      <inertial>
-        <pose>0 0 0 0 0 0</pose>
-        <mass>1</mass>
-        <inertia>
-          <ixx>1</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>1</iyy>
-          <iyz>0</iyz>
-          <izz>1</izz>
-        </inertia>
-      </inertial>
       <enable_wind>false</enable_wind>
     </link>
-    <joint name='camera_front_joint' type='fixed'>
-      <child>camera_front</child>
+
+    <joint name='camera_back_joint' type='fixed'>
+      <child>camera_back</child>
       <parent>base_link</parent>
-    	<pose>0.0553 0 0.4323 0 0 0</pose>
-      <!-- <pose>0 0 0 0 0 0</pose> -->
+      <pose>0 0 0 0 0 0</pose>
     </joint>
+
     <link name='camera_back'>
       <pose>-0.2410000000000001 0 0.23029999999999998 0 0 -3.1415926531795866</pose>
       <sensor name='color' type='camera'>
@@ -516,11 +504,6 @@
       </inertial>
       <enable_wind>false</enable_wind>
     </link>
-    <joint name='camera_back_joint' type='fixed'>
-      <child>camera_back</child>
-      <parent>base_link</parent>
-      <pose>0 0 0 0 0 0</pose>
-    </joint>
 
     <link name='scan_front'>
       <pose>0.22100000000000009 0 0.1404 0 0 0</pose>

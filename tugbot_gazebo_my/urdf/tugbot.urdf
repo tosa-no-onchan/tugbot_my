@@ -76,36 +76,38 @@
 	</joint>
 
 	<joint name="camera_front_joint" type="fixed">
-		<!-- <origin xyz="0.0553 0 0.4323" rpy="0 0 0" /> -->  <!-- 床の映像が、高い所にある -->
+		<origin xyz="0.0553 0 0.4323" rpy="0 0 0" />  <!-- 床の映像が、高い所にある -->
 		<!-- <origin xyz="0.0553 0 0.275" rpy="0 0 0" /> -->		<!--  前上がりか? -->
-		<origin xyz="0.0553 0 0.275" rpy="0 0.017453292519943295 0" />		<!--  1[dgree] 前を下げる OK -->
+		<!-- <origin xyz="0.0553 0 0.275" rpy="0 0.017453292519943295 0" /> -->		<!--  1[dgree] 前を下げる OK -->
 
 		<parent link="base_link"/>
 		<!-- <child link="tugbot/camera_front"/> -->
 		<child link="camera_front_link"/>
 	</joint>
+
 	<!-- <link name="tugbot/camera_front"> -->
 	<link name="camera_front_link" />
 
 	<joint name="camera_front_color_joint" type="fixed">
-		<!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
-		<origin xyz="0 0.032500000000000001 0.012500000000000001" rpy="0 0 0" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<!-- <origin xyz="0 0.032500000000000001 0.012500000000000001" rpy="0 0 0" /> -->
 		<parent link="camera_front_link"/>
 		<child link="camera_front/color_frame"/>
 	</joint>
 	<link name="camera_front/color_frame" />
 
 	<joint name="camera_front_color_optical_joint" type="fixed">
-		<!-- <origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" /> -->
-		<origin xyz="0 0.032500000000000001 0.012500000000000001" rpy="-1.5707963267948966 0 -1.5707963267948966" />
-		<parent link="camera_front_link"/>
+		<origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" />
+		<parent link="camera_front/color_frame"/>
 		<child link="camera_front/color_optical_frame"/>
 	</joint>
 	<link name="camera_front/color_optical_frame" />
 
 	<joint name="camera_front_depth_joint" type="fixed">
 		<!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
-		<origin xyz="0 0.017500000000000002 0.012500000000000001" rpy="0 0 0" />
+		<origin xyz="0 0.0175 0.0125" rpy="0 0 0" />	<!-- かなり 下 -->
+		<!-- <origin xyz="0 0.0175 0.225" rpy="0 0 0" /> -->		<!-- 前下り -->
+		<!-- <origin xyz="0 0.0175 0.225" rpy="0 -0.017453292519943295 0" /> -->		<!--  1[dgree] 前を上げる  -->
 		<parent link="camera_front_link"/>
 		<child link="camera_front/depth_frame"/>
 	</joint>
@@ -113,9 +115,8 @@
 
 
 	<joint name="camera_front_depth_optical_joint" type="fixed">
-		<!-- <origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" /> -->
-		<origin xyz="0 0.017500000000000002 0.012500000000000001" rpy="-1.5707963267948966 0 -1.5707963267948966" />
-		<parent link="camera_front_link"/>
+		<origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" />
+		<parent link="camera_front/depth_frame"/>
 		<child link="camera_front/depth_optical_frame"/>
 	</joint>
 	<link name="camera_front/depth_optical_frame" />
